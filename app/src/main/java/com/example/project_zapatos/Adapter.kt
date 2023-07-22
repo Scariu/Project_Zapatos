@@ -35,7 +35,9 @@ class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
             binding.imageViewZapato.load(itemZapato.imagenUrl)
             binding.textViewNombreZapato.text = itemZapato.nombre
             binding.textViewPrecio.text = itemZapato.precio.toString()
-
+            binding.cardViewItem.setOnClickListener{
+                Navigation.findNavController(binding.root).navigate(R.id.action_firstFragment_to_secondFragment)
+            }
         }
 
     }
