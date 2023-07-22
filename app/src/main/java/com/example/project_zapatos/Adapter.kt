@@ -3,6 +3,7 @@ package com.example.project_zapatos
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.project_zapatos.databinding.ItemBinding
 
 class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
@@ -23,7 +24,10 @@ class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
         return zapatos.size
     }
     class ViewHolder(private val binding: ItemBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Zapatos) {
+        fun bind(itemZapato: Zapatos) {
+            binding.imageViewZapato.load(itemZapato.imagenUrl)
+            binding.textViewNombreZapato.text = itemZapato.nombre
+            binding.textViewPrecio.text = itemZapato.precio.toString()
 
         }
 
