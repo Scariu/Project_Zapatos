@@ -23,6 +23,12 @@ class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
     override fun getItemCount(): Int {
         return zapatos.size
     }
+
+    fun setData(listaZapatos: MutableList<Zapatos>) {
+        this.zapatos = listaZapatos.toMutableList()
+
+    }
+
     class ViewHolder(private val binding: ItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(itemZapato: Zapatos) {
             binding.imageViewZapato.load(itemZapato.imagenUrl)

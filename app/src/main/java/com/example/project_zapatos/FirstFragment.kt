@@ -36,10 +36,15 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFirstBinding.inflate(LayoutInflater.from(activity))
-
-
-
+        initAdapter()
         return (binding.root)
+    }
+
+    private fun initAdapter() {
+        val adapter = Adapter()
+        val listaZapatos = ListaZapatos.zapatos
+        adapter.setData(listaZapatos)
+        binding.recyclerViewFirst.adapter = adapter
     }
 
     companion object {
