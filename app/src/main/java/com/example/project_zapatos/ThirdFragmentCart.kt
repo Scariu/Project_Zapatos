@@ -1,5 +1,7 @@
 package com.example.project_zapatos
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,8 +21,9 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ThirdFragmentCart.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ThirdFragmentCart : Fragment() {
+class ThirdFragmentCart : Fragment(), ItemsCart {
     private lateinit var binding: FragmentThirdCartBinding
+    private lateinit var mSharedPreferences: SharedPreferences
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -38,6 +41,7 @@ class ThirdFragmentCart : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentThirdCartBinding.inflate(LayoutInflater.from(activity))
+        mSharedPreferences = requireActivity().applicationContext.getSharedPreferences("cookie", Context.MODE_PRIVATE)
         initAdapter()
         initListeners()
         return (binding.root)
@@ -51,11 +55,19 @@ class ThirdFragmentCart : Fragment() {
 
     private fun initAdapter() {
         val adapter = AdapterCart()
-        val listaZapatos = ListaZapatos.zapatos
-        adapter.setData(listaZapatos)
+        val listaZapatosCart = addItemsCart()
+        adapter.setData(listaZapatosCart)
         binding.recyclerViewThird.adapter = adapter
     }
-
+    override fun addItemsCart(): MutableList<Zapatos>{
+        val zapatos = ListaZapatos.zapatos
+        val carro = mutableListOf<Zapatos>()
+        val nombres = mSharedPreferences.all
+        for (z in zapatos) {
+            if (nombres.containsKey(z.nombre))carro.add(z)
+        }
+        return carro
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of

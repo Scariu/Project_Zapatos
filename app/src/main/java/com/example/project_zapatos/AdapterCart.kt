@@ -1,5 +1,6 @@
 package com.example.project_zapatos
 
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.example.project_zapatos.databinding.ItemCartBinding
 
 class AdapterCart: RecyclerView.Adapter<AdapterCart.ViewHolder>() {
     private var zapatosCart = mutableListOf<Zapatos>()
+
 override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     var bindingCart = ItemCartBinding.inflate(LayoutInflater.from(parent.context))
     return ViewHolder(bindingCart)
@@ -32,8 +34,8 @@ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             binding.imageViewCart.load(itemZapato.imagenUrl)
             binding.textViewNombreCart.text = itemZapato.nombre
             binding.textViewPrecioCart.text = "$ " + itemZapato.precio.toString()
+            binding.imageButtonDelete.setOnClickListener {
             }
         }
-
     }
-
+}

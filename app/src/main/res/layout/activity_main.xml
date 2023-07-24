@@ -5,7 +5,7 @@
     android:id="@+id/consLayMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E36565"
+    android:background="#F2AEC1"
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView

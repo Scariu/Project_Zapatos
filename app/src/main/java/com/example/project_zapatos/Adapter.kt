@@ -1,5 +1,7 @@
 package com.example.project_zapatos
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -23,7 +25,6 @@ class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
         val item = zapatos[position]
         holder.bind(item)
 
-
     }
 
     override fun getItemCount(): Int {
@@ -44,10 +45,11 @@ class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
             binding.cardViewItem.setOnClickListener {
                 showZapato(itemZapato)
             }
-            binding.imageButtonCarrito.setOnClickListener{
+            binding.imageButtonCarrito.setOnClickListener {
                 Navigation.findNavController(binding.root)
                     .navigate(R.id.action_firstFragment_to_thirdFragmentCart)
             }
+
         }
 
         override fun showZapato(s: Zapatos) {
@@ -59,5 +61,12 @@ class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
                 .navigate(R.id.action_firstFragment_to_secondFragment, bundle)
         }
 
+
     }
 }
+
+
+
+
+
+

@@ -1,5 +1,7 @@
 package com.example.project_zapatos
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +21,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class FirstFragmentItems : Fragment() {
     lateinit var binding: FragmentFirstBinding
+    private lateinit var mSharedPreferences: SharedPreferences
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,6 +39,7 @@ class FirstFragmentItems : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFirstBinding.inflate(LayoutInflater.from(activity))
+        mSharedPreferences = requireActivity().applicationContext.getSharedPreferences("cookie", Context.MODE_PRIVATE)
         initAdapter()
         return (binding.root)
     }
@@ -67,6 +71,7 @@ class FirstFragmentItems : Fragment() {
                 }
             }
     }
+
 
 
 }

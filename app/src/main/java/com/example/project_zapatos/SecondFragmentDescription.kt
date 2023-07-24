@@ -1,5 +1,7 @@
 package com.example.project_zapatos
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,6 +23,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class SecondFragmentDescription : Fragment(){
     private lateinit var binding: FragmentSecondBinding
+    private lateinit var mSharedPreferences: SharedPreferences
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -40,25 +43,35 @@ class SecondFragmentDescription : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSecondBinding.inflate(LayoutInflater.from(activity))
+        mSharedPreferences = requireActivity().applicationContext.getSharedPreferences("cookie", Context.MODE_PRIVATE)
         setComponent()
         initListeners()
+        addToCart()
         return (binding.root)
     }
 
+
     private fun initListeners() {
-        binding.buttonAddCart.setOnClickListener{
+        binding.imageButtonShowCart.setOnClickListener {
             Navigation.findNavController(binding.root)
                 .navigate(R.id.action_secondFragment_to_thirdFragmentCart)
         }
-        binding.imageButtonBack.setOnClickListener{
+        binding.imageButtonBack.setOnClickListener {
             Navigation.findNavController(binding.root).navigateUp();
+        }
+        binding.buttonAddCart.setOnClickListener {
+            addToCart()
         }
     }
 
     private fun setComponent() {
-            binding.textViewNombre.text = param1
-            binding.imageViewProducto.load(param2)
-            binding.textViewPrecioSecond.text ="$ $param3"
+        binding.textViewNombre.text = param1
+        binding.imageViewProducto.load(param2)
+        binding.textViewPrecioSecond.text = "$ $param3"
+    }
+
+    private fun addToCart() {
+        mSharedPreferences.edit().putString(param1, param1).apply()
     }
 
     companion object {
@@ -77,7 +90,9 @@ class SecondFragmentDescription : Fragment(){
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
+
                 }
             }
     }
+
 }
