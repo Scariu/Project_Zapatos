@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.example.project_zapatos.databinding.FragmentSecondBinding
 import com.example.project_zapatos.databinding.FragmentThirdCartBinding
 
@@ -37,7 +38,22 @@ class ThirdFragmentCart : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentThirdCartBinding.inflate(LayoutInflater.from(activity))
+        initAdapter()
+        initListeners()
         return (binding.root)
+    }
+
+    private fun initListeners() {
+        binding.imageButtonBackThird.setOnClickListener{
+            Navigation.findNavController(binding.root).navigateUp();
+        }
+    }
+
+    private fun initAdapter() {
+        val adapter = AdapterCart()
+        val listaZapatos = ListaZapatos.zapatos
+        adapter.setData(listaZapatos)
+        binding.recyclerViewThird.adapter = adapter
     }
 
     companion object {

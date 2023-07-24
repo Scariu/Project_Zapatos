@@ -13,10 +13,22 @@
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
             app:destination="@id/secondFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_thirdFragmentCart"
+            app:destination="@id/thirdFragmentCart" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.example.project_zapatos.SecondFragmentDescription"
         android:label="fragment_second"
-        tools:layout="@layout/fragment_second" />
+        tools:layout="@layout/fragment_second" >
+        <action
+            android:id="@+id/action_secondFragment_to_thirdFragmentCart"
+            app:destination="@id/thirdFragmentCart" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdFragmentCart"
+        android:name="com.example.project_zapatos.ThirdFragmentCart"
+        android:label="fragment_third_cart"
+        tools:layout="@layout/fragment_third_cart" />
 </navigation>

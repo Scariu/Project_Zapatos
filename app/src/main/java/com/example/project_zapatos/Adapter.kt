@@ -7,6 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.project_zapatos.databinding.ItemBinding
+import com.example.project_zapatos.databinding.ItemCartBinding
 
 class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
 
@@ -14,12 +15,15 @@ class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter.ViewHolder {
         var binding = ItemBinding.inflate(LayoutInflater.from(parent.context))
+
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: Adapter.ViewHolder, position: Int) {
         val item = zapatos[position]
         holder.bind(item)
+
+
     }
 
     override fun getItemCount(): Int {
@@ -39,6 +43,10 @@ class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
             binding.textViewPrecio.text = "$ " + itemZapato.precio.toString()
             binding.cardViewItem.setOnClickListener {
                 showZapato(itemZapato)
+            }
+            binding.imageButtonCarrito.setOnClickListener{
+                Navigation.findNavController(binding.root)
+                    .navigate(R.id.action_firstFragment_to_thirdFragmentCart)
             }
         }
 

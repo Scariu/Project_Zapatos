@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import coil.load
 import com.example.project_zapatos.databinding.FragmentSecondBinding
 
@@ -40,7 +41,18 @@ class SecondFragmentDescription : Fragment(){
     ): View? {
         binding = FragmentSecondBinding.inflate(LayoutInflater.from(activity))
         setComponent()
+        initListeners()
         return (binding.root)
+    }
+
+    private fun initListeners() {
+        binding.buttonAddCart.setOnClickListener{
+            Navigation.findNavController(binding.root)
+                .navigate(R.id.action_secondFragment_to_thirdFragmentCart)
+        }
+        binding.imageButtonBack.setOnClickListener{
+            Navigation.findNavController(binding.root).navigateUp();
+        }
     }
 
     private fun setComponent() {

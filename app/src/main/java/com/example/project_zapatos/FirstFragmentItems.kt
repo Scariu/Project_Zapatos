@@ -40,6 +40,7 @@ class FirstFragmentItems : Fragment() {
         return (binding.root)
     }
 
+
     private fun initAdapter() {
         val adapter = Adapter()
         val listaZapatos = ListaZapatos.zapatos
