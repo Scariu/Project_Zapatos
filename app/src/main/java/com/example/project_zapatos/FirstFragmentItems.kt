@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.example.project_zapatos.databinding.FragmentFirstBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -41,9 +42,16 @@ class FirstFragmentItems : Fragment() {
         binding = FragmentFirstBinding.inflate(LayoutInflater.from(activity))
         mSharedPreferences = requireActivity().applicationContext.getSharedPreferences("cookie", Context.MODE_PRIVATE)
         initAdapter()
+        initListeners()
         return (binding.root)
     }
 
+    private fun initListeners() {
+        binding.imageButtonCart.setOnClickListener{
+        Navigation.findNavController(binding.root)
+            .navigate(R.id.action_firstFragment_to_thirdFragmentCart)
+    }
+    }
 
     private fun initAdapter() {
         val adapter = Adapter()
@@ -71,7 +79,4 @@ class FirstFragmentItems : Fragment() {
                 }
             }
     }
-
-
-
 }
