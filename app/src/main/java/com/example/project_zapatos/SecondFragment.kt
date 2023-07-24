@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import coil.load
 import com.example.project_zapatos.databinding.FragmentSecondBinding
 
@@ -20,16 +21,17 @@ private const val ARG_PARAM2 = "param2"
  */
 class SecondFragment : Fragment(){
     private lateinit var binding: FragmentSecondBinding
-    var zapatos = mutableListOf<Zapatos>()
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var param3: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            param1 = it.getString("nombre")
+            param2 = it.getString("url")
+            param3 = it.getString("precio")
         }
     }
 
@@ -38,20 +40,14 @@ class SecondFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSecondBinding.inflate(LayoutInflater.from(activity))
-        //val adapter = Adapter()
-        val listaZapatos = ListaZapatos.zapatos
-        setComponent(listaZapatos)
-       // adapter.setData(listaZapatos)
-        //adapter.setZapatoCallBack(this)
+        setComponent()
         return (binding.root)
     }
 
-    private fun setComponent(listZapatos: List<Zapatos>) {
-        for (z in listZapatos) {
-            binding.textViewNombre.text = z.nombre
-            binding.imageViewProducto.load(z.imagenUrl)
-            binding.textViewPrecioSecond.text = z.precio.toString()
-        }
+    private fun setComponent() {
+            binding.textViewNombre.text = param1
+            binding.imageViewProducto.load(param2)
+            binding.textViewPrecioSecond.text ="$ $param3"
     }
 
     companion object {
@@ -73,12 +69,4 @@ class SecondFragment : Fragment(){
                 }
             }
     }
-
-    /*override fun showZapato(s: Zapatos) {
-        for (z in zapatos) {
-            binding.textViewNombre.text = s.nombre
-            binding.imageViewProducto.load(s.imagenUrl)
-            binding.textViewPrecioSecond.text = s.precio.toString()
-        }
-    }*/
 }
