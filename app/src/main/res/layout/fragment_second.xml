@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#73CDD8"
-    tools:context=".SecondFragment"
+    tools:context=".SecondFragmentDescription"
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:navGraph="@navigation/nav_graph"
     app:defaultNavHost="true">
