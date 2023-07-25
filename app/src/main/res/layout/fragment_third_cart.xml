@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contLayThird"
+    android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D0D0D"
-    tools:context=".ThirdFragmentCart"
+    android:background="@color/other_black"
+    app:defaultNavHost="true"
     app:navGraph="@navigation/nav_graph"
-    android:name="androidx.navigation.fragment.NavHostFragment"
-    app:defaultNavHost="true">
+    tools:context=".ThirdFragmentCart">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewTitulo"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:backgroundTint="#F2F2F2"
+        android:backgroundTint="@color/other_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,8 +28,9 @@
                 android:id="@+id/textViewTitleThird"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Titulo"
-                android:textSize="24sp"
+                android:text="@string/titulo"
+                android:textColor="@color/black"
+                android:textSize="34sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.4"
@@ -48,6 +49,15 @@
                 android:src="@drawable/baseline_arrow_back_ios_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageViewFire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_whatshot_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textViewTitleThird"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,6 +81,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/other_white"
         app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +100,8 @@
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
                 android:text="TOTAL"
-                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
