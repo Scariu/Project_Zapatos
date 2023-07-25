@@ -14,7 +14,7 @@ class ListaZapatos {
             add(Zapatos("Zapatillas con luces", "https://images-eu.ssl-images-amazon.com/images/I/41FhkR8YVqL.jpg", 199.99F))
             add(Zapatos("Zapatos de Tony", "https://i.pinimg.com/736x/21/ac/31/21ac315c00ef7a0dd480730288edcca2.jpg", 199.99F))
             add(Zapatos("Botas Medievales", "https://m.media-amazon.com/images/I/61tVF1wnFcL._AC_UY1000_.jpg", 119.99F))
-            add(Zapatos("Pantuflas de Homelo", "https://http2.mlstatic.com/D_NQ_NP_880135-MLC50174593968_062022-O.webp", 149.99F))
+            add(Zapatos("Pantuflas Homelo", "https://http2.mlstatic.com/D_NQ_NP_880135-MLC50174593968_062022-O.webp", 149.99F))
         }
     }
 }

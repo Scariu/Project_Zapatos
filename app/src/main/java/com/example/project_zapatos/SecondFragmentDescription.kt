@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.project_zapatos.databinding.FragmentSecondBinding
 
@@ -46,14 +47,13 @@ class SecondFragmentDescription : Fragment(){
         mSharedPreferences = requireActivity().applicationContext.getSharedPreferences("cookie", Context.MODE_PRIVATE)
         setComponent()
         initListeners()
-        addToCart()
         return (binding.root)
     }
 
 
     private fun initListeners() {
         binding.imageButtonShowCart.setOnClickListener {
-            Navigation.findNavController(binding.root)
+            findNavController()
                 .navigate(R.id.action_secondFragment_to_thirdFragmentCart)
         }
         binding.imageButtonBack.setOnClickListener {

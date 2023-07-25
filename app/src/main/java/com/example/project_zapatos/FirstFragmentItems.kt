@@ -22,7 +22,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class FirstFragmentItems : Fragment() {
     lateinit var binding: FragmentFirstBinding
-    private lateinit var mSharedPreferences: SharedPreferences
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -40,7 +40,6 @@ class FirstFragmentItems : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFirstBinding.inflate(LayoutInflater.from(activity))
-        mSharedPreferences = requireActivity().applicationContext.getSharedPreferences("cookie", Context.MODE_PRIVATE)
         initAdapter()
         initListeners()
         return (binding.root)
