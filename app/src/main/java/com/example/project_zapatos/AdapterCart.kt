@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.project_zapatos.databinding.ItemCartBinding
 
-class AdapterCart: RecyclerView.Adapter<AdapterCart.ViewHolder>() {
-    private var zapatosCart = mutableListOf<Zapatos>()
+class AdapterCart(private val mSharedPreferences: SharedPreferences, private val cart: ThirdFragmentCart): RecyclerView.Adapter<AdapterCart.ViewHolder>() {
+    private var shoesCart = mutableListOf<Zapatos>()
 
 override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     var bindingCart = ItemCartBinding.inflate(LayoutInflater.from(parent.context))
@@ -16,25 +16,33 @@ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val itemCart = zapatosCart[position]
+        val itemCart = shoesCart[position]
         holder.bind(itemCart)
     }
 
     override fun getItemCount(): Int {
-        return zapatosCart.size
+        return shoesCart.size
     }
     fun setData(listaZapatos: MutableList<Zapatos>) {
-        this.zapatosCart = listaZapatos.toMutableList()
+        this.shoesCart = listaZapatos.toMutableList()
+        notifyDataSetChanged()
 
     }
 
-    class ViewHolder(private val binding: ItemCartBinding) :
+    inner class ViewHolder(val binding: ItemCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(itemZapato: Zapatos) {
             binding.imageViewCart.load(itemZapato.imagenUrl)
             binding.textViewNombreCart.text = itemZapato.nombre
             binding.textViewPrecioCart.text = "$ " + itemZapato.precio.toString()
             binding.imageButtonDelete.setOnClickListener {
+                val position = adapterPosition
+                val itemToRemove = shoesCart[position]
+                mSharedPreferences.edit().remove(itemToRemove.nombre).apply()
+                shoesCart.removeAt(position)
+                notifyItemRemoved(position)
+                cart.addSumaTotal(shoesCart)
             }
         }
     }

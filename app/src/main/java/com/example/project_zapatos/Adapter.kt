@@ -49,8 +49,8 @@ class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
                 Navigation.findNavController(binding.root)
                     .navigate(R.id.action_firstFragment_to_thirdFragmentCart)
             }
-
         }
+
 
         override fun showZapato(s: Zapatos) {
             val bundle = Bundle()

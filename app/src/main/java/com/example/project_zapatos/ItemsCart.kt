@@ -1,5 +1,9 @@
 package com.example.project_zapatos
 
-interface ItemsCart {
+interface AddItemsCart {
     fun addItemsCart(): MutableList<Zapatos>
 }
+interface DeleteItemsCart {
+    fun deleteCart(item: Zapatos)
+}
+
