@@ -1,8 +1,6 @@
 package com.example.project_zapatos
-
 data class Zapatos (val nombre: String, val imagenUrl: String, val precio: Float) {
 }
-
 class ListaZapatos {
     companion object {
         val zapatos = mutableListOf<Zapatos>().apply {

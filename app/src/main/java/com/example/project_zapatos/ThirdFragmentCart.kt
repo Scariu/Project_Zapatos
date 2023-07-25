@@ -21,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ThirdFragmentCart.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ThirdFragmentCart : Fragment(), AddItemsCart{
+class ThirdFragmentCart : Fragment(), ItemCart{
     private lateinit var binding: FragmentThirdCartBinding
     private lateinit var mSharedPreferences: SharedPreferences
     private var zapatosList: MutableList<Zapatos> = ListaZapatos.zapatos.toMutableList()

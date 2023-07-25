@@ -1,7 +1,5 @@
 package com.example.project_zapatos
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +7,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.project_zapatos.databinding.ItemBinding
-import com.example.project_zapatos.databinding.ItemCartBinding
 
 class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
 
