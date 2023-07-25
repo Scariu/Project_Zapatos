@@ -8,13 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-import com.example.project_zapatos.ListaZapatos.Companion.zapatos
-import com.example.project_zapatos.databinding.FragmentSecondBinding
 import com.example.project_zapatos.databinding.FragmentThirdCartBinding
 
 // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -54,7 +51,7 @@ class ThirdFragmentCart : Fragment(), AddItemsCart{
         adapter.setData(data)
         addSumaTotal(data)
     }
-    public fun addSumaTotal(zapatos: List<Zapatos>){
+    fun addSumaTotal(zapatos: List<Zapatos>){
         var total = 0F
         for (zapato in zapatos){
             total += zapato.precio
@@ -66,7 +63,6 @@ class ThirdFragmentCart : Fragment(), AddItemsCart{
             Navigation.findNavController(binding.root).navigateUp();
         }
     }
-
     private fun initAdapter() {
         val cartAdapter = AdapterCart(mSharedPreferences, this)
         val listaZapatosCart = addItemsCart()

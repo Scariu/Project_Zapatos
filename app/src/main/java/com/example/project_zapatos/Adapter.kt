@@ -45,10 +45,6 @@ class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
             binding.cardViewItem.setOnClickListener {
                 showZapato(itemZapato)
             }
-            binding.imageButtonCarrito.setOnClickListener {
-                Navigation.findNavController(binding.root)
-                    .navigate(R.id.action_firstFragment_to_thirdFragmentCart)
-            }
         }
 
 

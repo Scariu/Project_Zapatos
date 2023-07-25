@@ -42,15 +42,8 @@ class FirstFragmentItems : Fragment() {
         binding = FragmentFirstBinding.inflate(LayoutInflater.from(activity))
         mSharedPreferences = requireActivity().applicationContext.getSharedPreferences("cookie", Context.MODE_PRIVATE)
         initAdapter()
-        initListeners()
-        return (binding.root)
-    }
 
-    private fun initListeners() {
-        binding.imageButtonCart.setOnClickListener{
-        Navigation.findNavController(binding.root)
-            .navigate(R.id.action_firstFragment_to_thirdFragmentCart)
-    }
+        return (binding.root)
     }
 
     private fun initAdapter() {
