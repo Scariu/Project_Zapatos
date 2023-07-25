@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.project_zapatos.databinding.FragmentThirdCartBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -62,6 +63,9 @@ class ThirdFragmentCart : Fragment(), AddItemsCart{
         binding.imageButtonBackThird.setOnClickListener{
             Navigation.findNavController(binding.root).navigateUp();
         }
+        binding.imageButtonDeleteAll.setOnClickListener{
+            deleteAll()
+        }
     }
     private fun initAdapter() {
         val cartAdapter = AdapterCart(mSharedPreferences, this)
@@ -78,6 +82,11 @@ class ThirdFragmentCart : Fragment(), AddItemsCart{
             if (nombres.containsKey(z.nombre))carro.add(z)
         }
         return carro
+    }
+    private fun deleteAll() {
+        mSharedPreferences.edit().clear().apply()
+        findNavController().navigate(R.id.action_thirdFragmentCart_self)
+
     }
     companion object {
         /**

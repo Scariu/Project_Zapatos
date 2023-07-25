@@ -32,5 +32,8 @@
         android:label="fragment_third_cart"
         tools:layout="@layout/fragment_third_cart" >
 
+        <action
+            android:id="@+id/action_thirdFragmentCart_self"
+            app:destination="@id/thirdFragmentCart" />
     </fragment>
 </navigation>
